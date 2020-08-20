@@ -18,6 +18,7 @@ var dishRouter = require('./routes/dishRouter');
 var promoRouter = require('./routes/promoRouter');
 var leaderRouter = require('./routes/leaderRouter');
 var uploadRouter = require('./routes/uploadRouter');
+var favoriteRouter = require('./routes/favoriteRouter');
 const Dishes = require('./models/dishes');
 
 //const url = 'mongodb://localhost:27017/conFusion';
@@ -118,6 +119,8 @@ app.use('/promotions/:promoId', promoRouter);
 app.use('/leaders', leaderRouter);
 app.use('/leaders/:leaderId', leaderRouter);
 app.use('/upload', uploadRouter);
+app.use('/favorites', favoriteRouter);
+app.use('/favorites/:dishId', favoriteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
