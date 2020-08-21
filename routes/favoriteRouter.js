@@ -15,7 +15,7 @@ favoriteRouter.route('/')
     console.log(req.user._id);
     Favorites.findOne({user:req.user._id})
     .populate('user')
-    .populate('dish')
+    .populate('dishes')
     .exec((err,favorites)=>{
         if(err) return next(err);
         else{
@@ -40,7 +40,7 @@ favoriteRouter.route('/')
                 .then((favorite)=>{
                     Favorites.findById(favorite._id)
                     .populate('user')
-                    .populate('dish')
+                    .populate('dishes')
                     .then((favorite) => {
                         res.statusCode = 200;
                         res.setHeader('Content-Type', 'application/json');
@@ -63,7 +63,7 @@ favoriteRouter.route('/')
             .then((favorite) => {
                 Favorites.findById(favorite._id)
                 .populate('user')
-                .populate('dish')
+                .populate('dishes')
                 .then((favorite) => {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
@@ -128,7 +128,7 @@ favoriteRouter.route('/:dishId')
                 favorite.save()
                 Favorites.findById(favorite._id)
                 .populate('user')
-                .populate('dish')
+                .populate('dishes')
                 .then((favorite) => {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
@@ -147,7 +147,7 @@ favoriteRouter.route('/:dishId')
                 .then((favorite) => {
                     Favorites.findById(favorite._id)
                     .populate('user')
-                    .populate('dish')
+                    .populate('dishes')
                     .then((favorite) => {
                         res.statusCode = 200;
                         res.setHeader('Content-Type', 'application/json');
@@ -190,7 +190,7 @@ favoriteRouter.route('/:dishId')
                 //favorite.save()
                 Favorites.findById(favorite._id)
                 .populate('user')
-                .populate('dish')
+                .populate('dishes')
                 .then((favorite) => {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
